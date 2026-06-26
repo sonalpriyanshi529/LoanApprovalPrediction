@@ -1,0 +1,44 @@
+17:01:43 | INFO | ============================================================
+17:01:43 | INFO | Loan Approval Prediction - Training Pipeline
+17:01:43 | INFO |    Python  : 3.12.3
+17:01:43 | INFO |    sklearn : 1.9.0
+17:01:43 | INFO | ============================================================
+17:01:43 | INFO | Loading local dataset: P:\Coding\LoanApprovalPrediction\Dataset\loan_data.csv
+17:01:43 | INFO | Dataset shape: (614, 13)
+17:01:43 | INFO | Missing values before imputation:
+17:01:43 | INFO |   Gender: 14
+17:01:43 | INFO |   Married: 11
+17:01:43 | INFO |   Dependents: 10
+17:01:43 | INFO |   Self_Employed: 20
+17:01:43 | INFO |   LoanAmount: 25
+17:01:43 | INFO |   Loan_Amount_Term: 15
+17:01:43 | INFO |   Credit_History: 53
+17:01:43 | INFO | Preprocessing complete. Shape: (614, 16)
+17:01:43 | INFO | Train: 491 | Test: 123
+17:01:43 | INFO | Training: Logistic Regression
+17:01:47 | INFO |   Acc=0.8293  Prec=0.8889  Rec=0.8571  F1=0.8727  AUC=0.8288  CV=0.8331±0.0521
+17:01:47 | INFO | Training: Random Forest
+17:01:51 | INFO |   Acc=0.8130  Prec=0.8675  Rec=0.8571  F1=0.8623  AUC=0.7772  CV=0.8107±0.0385
+17:01:51 | INFO | Training: XGBoost
+17:01:51 | INFO |   Acc=0.8049  Prec=0.8571  Rec=0.8571  F1=0.8571  AUC=0.7381  CV=0.7821±0.0329
+17:01:51 | INFO | 
+Best Model: Logistic Regression  (ROC-AUC = 0.8288)
+17:01:51 | INFO | best_model.pkl saved
+17:01:51 | INFO | scaler.pkl saved
+17:01:51 | INFO | label_encoders.pkl saved
+17:01:51 | INFO | feature_names.pkl saved
+17:01:51 | INFO | model_metrics.pkl saved
+17:01:51 | INFO | logistic_regression.pkl saved
+17:01:51 | INFO | random_forest.pkl saved
+17:01:51 | INFO | xgboost.pkl saved
+17:01:51 | INFO | metadata.json saved
+17:01:51 | INFO | 
+📊 FINAL RESULTS SUMMARY
+17:01:51 | INFO | ------------------------------------------------------------
+17:01:51 | INFO | Model                        Acc   Prec    Rec     F1    AUC
+17:01:51 | INFO | ------------------------------------------------------------
+17:01:51 | INFO | Logistic Regression       0.8293 0.8889 0.8571 0.8727 0.8288 <- BEST
+17:01:51 | INFO | Random Forest             0.8130 0.8675 0.8571 0.8623 0.7772
+17:01:51 | INFO | XGBoost                   0.8049 0.8571 0.8571 0.8571 0.7381
+17:01:51 | INFO | 
+Training complete! All artifacts saved to Model/

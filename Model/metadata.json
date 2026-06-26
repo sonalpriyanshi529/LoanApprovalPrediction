@@ -1,0 +1,50 @@
+{
+  "best_model": "Logistic Regression",
+  "feature_names": [
+    "Gender",
+    "Married",
+    "Dependents",
+    "Education",
+    "Self_Employed",
+    "Loan_Amount_Term",
+    "Credit_History",
+    "Property_Area",
+    "Log_ApplicantIncome",
+    "Log_CoapplicantIncome",
+    "Log_LoanAmount",
+    "Log_TotalIncome",
+    "EMI",
+    "Balance_Income",
+    "Debt_Income_Ratio"
+  ],
+  "python_version": "3.12.3",
+  "metrics": {
+    "Logistic Regression": {
+      "Accuracy": 0.8293,
+      "Precision": 0.8889,
+      "Recall": 0.8571,
+      "F1_Score": 0.8727,
+      "ROC_AUC": 0.8288,
+      "CV_Mean": 0.8331,
+      "CV_Std": 0.0521
+    },
+    "Random Forest": {
+      "Accuracy": 0.813,
+      "Precision": 0.8675,
+      "Recall": 0.8571,
+      "F1_Score": 0.8623,
+      "ROC_AUC": 0.7772,
+      "CV_Mean": 0.8107,
+      "CV_Std": 0.0385
+    },
+    "XGBoost": {
+      "Accuracy": 0.8049,
+      "Precision": 0.8571,
+      "Recall": 0.8571,
+      "F1_Score": 0.8571,
+      "ROC_AUC": 0.7381,
+      "CV_Mean": 0.7821,
+      "CV_Std": 0.0329
+    }
+  }
+}

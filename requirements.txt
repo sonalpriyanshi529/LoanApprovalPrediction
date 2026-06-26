@@ -1,0 +1,22 @@
+# Loan Approval Prediction System
+# AIML Summer Internship 2026 | MNNIT Allahabad
+# Install: pip install -r requirements.txt
+
+# Core ML
+scikit-learn>=1.3.0
+xgboost>=1.7.0
+numpy>=1.24.0
+pandas>=2.0.0
+
+# Serialisation
+joblib>=1.3.0
+
+# Visualisation (notebook)
+matplotlib>=3.7.0
+seaborn>=0.12.0
+
+# Deployment
+streamlit>=1.28.0
+
+# Utilities
+kaggle>=1.5.0          # optional: for Kaggle dataset download
