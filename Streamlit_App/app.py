@@ -35,93 +35,210 @@ st.set_page_config(
 # ─────────────────────────────────────────────
 st.markdown("""
 <style>
+/* ── Design tokens (from brand palette) ── */
+:root {
+    --bg:            #101415;
+    --card:          #363A3B;
+    --accent:        #10B981;
+    --accent-soft:   rgba(16,185,129,0.14);
+    --text-primary:  #FFFFFF;
+    --text-secondary:#9CA3AF;
+    --border:        #1F2937;
+    --danger:        #F87171;
+    --danger-soft:   rgba(248,113,113,0.14);
+}
+
 /* ── Global ── */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
 html, body, [class*="css"] { font-family: 'Inter', sans-serif; }
+
+.stApp {
+    background: var(--bg);
+    color: var(--text-primary);
+}
+
+/* Tighten default top padding a touch for a denser dashboard feel */
+.block-container { padding-top: 2rem; padding-bottom: 2.5rem; }
 
 /* ── Header ── */
 .main-header {
-    background: linear-gradient(135deg, #1a237e 0%, #283593 40%, #3949ab 100%);
-    padding: 2rem 2.5rem;
+    background: linear-gradient(135deg, #14201C 0%, #182420 60%, #101415 100%);
+    border: 1px solid var(--border);
+    padding: 1.8rem 2.2rem;
     border-radius: 16px;
     margin-bottom: 1.8rem;
-    box-shadow: 0 8px 32px rgba(26,35,126,0.25);
-    color: white;
+    box-shadow: 0 8px 28px rgba(0,0,0,0.35);
+    color: var(--text-primary);
 }
-.main-header h1 { font-size: 2rem; font-weight: 700; margin: 0 0 0.3rem 0; }
-.main-header p  { font-size: 0.9rem; opacity: 0.85; margin: 0; }
+.main-header h1 { font-size: 1.9rem; font-weight: 700; margin: 0 0 0.35rem 0; letter-spacing: -0.02em; }
+.main-header p  { font-size: 0.9rem; color: var(--text-secondary); margin: 0; }
 
-/* ── Cards ── */
+/* ── Cards (metrics) ── */
 .metric-card {
-    background: #fff;
-    border: 1px solid #e8eaf6;
-    border-radius: 12px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
     padding: 1.1rem 1.2rem;
     text-align: center;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-    transition: transform 0.2s;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.25);
+    transition: transform 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease;
 }
-.metric-card:hover { transform: translateY(-2px); }
-.metric-card .label { font-size: 0.75rem; color: #5c6bc0; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
-.metric-card .value { font-size: 1.6rem; font-weight: 700; color: #1a237e; margin-top: 0.2rem; }
-.metric-card .sub   { font-size: 0.72rem; color: #90a4ae; margin-top: 0.1rem; }
+.metric-card:hover {
+    transform: translateY(-3px);
+    border-color: var(--accent);
+    box-shadow: 0 8px 22px rgba(16,185,129,0.18);
+}
+.metric-card .label { font-size: 0.72rem; color: var(--text-secondary); font-weight: 600; text-transform: uppercase; letter-spacing: 0.6px; }
+.metric-card .value { font-size: 1.65rem; font-weight: 700; color: var(--accent); margin-top: 0.25rem; }
+.metric-card .sub   { font-size: 0.72rem; color: var(--text-secondary); margin-top: 0.15rem; opacity: 0.85; }
 
 /* ── Result boxes ── */
 .result-approved {
-    background: linear-gradient(135deg, #e8f5e9, #c8e6c9);
-    border: 2px solid #4caf50;
+    background: linear-gradient(135deg, rgba(16,185,129,0.14), rgba(16,185,129,0.05));
+    border: 1.5px solid var(--accent);
     border-radius: 16px;
     padding: 2rem;
     text-align: center;
     animation: pulse 0.5s ease;
 }
 .result-rejected {
-    background: linear-gradient(135deg, #fce4ec, #f8bbd0);
-    border: 2px solid #f44336;
+    background: linear-gradient(135deg, rgba(248,113,113,0.14), rgba(248,113,113,0.05));
+    border: 1.5px solid var(--danger);
     border-radius: 16px;
     padding: 2rem;
     text-align: center;
     animation: pulse 0.5s ease;
 }
 @keyframes pulse {
-    0%   { transform: scale(0.97); }
+    0%   { transform: scale(0.97); opacity: 0.7; }
     50%  { transform: scale(1.02); }
-    100% { transform: scale(1.00); }
+    100% { transform: scale(1.00); opacity: 1; }
 }
 
 /* ── Section titles ── */
 .section-title {
-    font-size: 1rem;
+    font-size: 0.95rem;
     font-weight: 600;
-    color: #ffd600;
-    border-left: 4px solid #3f51b5;
+    color: var(--text-primary);
+    border-left: 3px solid var(--accent);
     padding-left: 0.7rem;
     margin: 1.2rem 0 0.8rem 0;
+    letter-spacing: 0.01em;
 }
 
 /* ── Sidebar ── */
 [data-testid="stSidebar"] {
-    background: linear-gradient(180deg, #1a237e 0%, #283593 100%);
+    background: #14181A;
+    border-right: 1px solid var(--border);
 }
-[data-testid="stSidebar"] * { color: white !important; }
+[data-testid="stSidebar"] * { color: var(--text-primary) !important; }
 [data-testid="stSidebar"] .stSelectbox label,
 [data-testid="stSidebar"] .stNumberInput label,
-[data-testid="stSidebar"] .stSlider label { color: #c5cae9 !important; font-size: 0.82rem; }
+[data-testid="stSidebar"] .stSlider label { color: var(--text-secondary) !important; font-size: 0.82rem; }
+[data-testid="stSidebar"] hr { border-color: var(--border); }
+
+/* Sidebar info/metric boxes pick up card styling for consistency */
+[data-testid="stSidebar"] [data-testid="stAlert"] {
+    background: var(--card);
+    border: 1px solid var(--accent);
+    border-radius: 10px;
+}
+[data-testid="stSidebar"] [data-testid="stMetric"] {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 0.5rem 0.7rem;
+    margin-bottom: 0.4rem;
+}
+[data-testid="stMetricValue"] { color: var(--accent) !important; }
+
+/* ── Tabs ── */
+.stTabs [data-baseweb="tab-list"] { gap: 4px; border-bottom: 1px solid var(--border); }
+.stTabs [data-baseweb="tab"] {
+    background: transparent;
+    color: var(--text-secondary);
+    border-radius: 10px 10px 0 0;
+    padding: 0.5rem 1.1rem;
+    font-weight: 500;
+}
+.stTabs [aria-selected="true"] {
+    color: var(--accent) !important;
+    background: var(--accent-soft) !important;
+    border-bottom: 2px solid var(--accent) !important;
+}
+
+/* ── Inputs ── */
+.stSelectbox div[data-baseweb="select"] > div,
+.stNumberInput input,
+.stTextInput input {
+    background: var(--card) !important;
+    border: 1px solid var(--border) !important;
+    color: var(--text-primary) !important;
+    border-radius: 10px !important;
+}
+.stSelectbox div[data-baseweb="select"] > div:focus-within,
+.stNumberInput input:focus,
+.stTextInput input:focus {
+    border-color: var(--accent) !important;
+    box-shadow: 0 0 0 1px var(--accent) !important;
+}
+label, .stMarkdown p { color: var(--text-primary); }
+[data-testid="stWidgetLabel"] p { color: var(--text-secondary) !important; font-size: 0.85rem; }
+
+/* ── Buttons ── */
+.stButton > button {
+    background: var(--accent) !important;
+    color: #06231B !important;
+    border: none !important;
+    border-radius: 10px !important;
+    font-weight: 700 !important;
+    padding: 0.6rem 1.2rem !important;
+    transition: transform 0.15s ease, box-shadow 0.15s ease, filter 0.15s ease;
+    box-shadow: 0 4px 14px rgba(16,185,129,0.25);
+}
+.stButton > button:hover {
+    filter: brightness(1.08);
+    transform: translateY(-1px);
+    box-shadow: 0 6px 18px rgba(16,185,129,0.35);
+}
+
+/* ── Alerts / info boxes ── */
+[data-testid="stAlert"] {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    color: var(--text-primary);
+}
+
+/* ── Dataframe / tables ── */
+[data-testid="stDataFrame"] { border: 1px solid var(--border); border-radius: 10px; overflow-x: auto; }
 
 /* ── Divider ── */
-hr { border-color: #e8eaf6; margin: 1.5rem 0; }
+hr { border-color: var(--border); margin: 1.5rem 0; }
 
 /* ── Badge ── */
 .badge {
     display: inline-block;
-    background: #3f51b5;
-    color: white;
+    background: var(--accent);
+    color: #06231B;
     border-radius: 20px;
     padding: 2px 10px;
     font-size: 0.72rem;
-    font-weight: 600;
+    font-weight: 700;
     margin-left: 6px;
     vertical-align: middle;
+}
+
+/* ── Responsive tweaks (mobile / tablet) ── */
+@media (max-width: 768px) {
+    .block-container { padding-left: 1rem; padding-right: 1rem; }
+    .main-header { padding: 1.4rem 1.4rem; border-radius: 12px; }
+    .main-header h1 { font-size: 1.4rem; }
+    .main-header p { font-size: 0.8rem; }
+    .metric-card { padding: 0.9rem 0.8rem; }
+    .metric-card .value { font-size: 1.3rem; }
+    div[data-testid="column"] { width: 100% !important; flex: 1 1 100% !important; min-width: 100% !important; }
+    [data-testid="stDataFrame"] { overflow-x: auto; }
 }
 </style>
 """, unsafe_allow_html=True)
@@ -336,11 +453,11 @@ def main():
                 if approved:
                     st.markdown(f"""
                     <div class="result-approved">
-                        <h2 style="color:#1b5e20;">✅ LOAN APPROVED</h2>
-                        <p style="font-size:1.1rem; color:#2e7d32; margin:0.5rem 0">
+                        <h2 style="color:#10B981; margin:0;">✅ LOAN APPROVED</h2>
+                        <p style="font-size:1.1rem; color:#FFFFFF; margin:0.5rem 0">
                             Confidence: <strong>{conf*100:.1f}%</strong>
                         </p>
-                        <p style="color:#558b2f; font-size:0.9rem;">
+                        <p style="color:#9CA3AF; font-size:0.9rem;">
                             The applicant's profile meets our lending criteria.
                         </p>
                     </div>
@@ -348,11 +465,11 @@ def main():
                 else:
                     st.markdown(f"""
                 <div class="result-rejected">
-                    <h2>❌ LOAN REJECTED</h2>
-                    <p style="font-size:1.1rem; color:#c62828; margin:0.5rem 0">
+                    <h2 style="color:#F87171; margin:0;">❌ LOAN REJECTED</h2>
+                    <p style="font-size:1.1rem; color:#FFFFFF; margin:0.5rem 0">
                         Confidence: <strong>{conf*100:.1f}%</strong>
                     </p>
-                    <p style="color:#b71c1c; font-size:0.9rem;">
+                    <p style="color:#9CA3AF; font-size:0.9rem;">
                         The application does not meet current lending criteria.
                     </p>
                 </div>
@@ -380,12 +497,12 @@ def main():
             }
             f_cols = st.columns(len(factors))
             for col, (fname, (fval, fpos)) in zip(f_cols, factors.items()):
-                color = "#4caf50" if fpos else "#ff7043"
+                color = "#10B981" if fpos else "#F87171"
                 col.markdown(f"""
                 <div style="background:{color}18;border:1px solid {color}40;
-                            border-radius:8px;padding:0.6rem 0.8rem;text-align:center;">
+                            border-radius:10px;padding:0.6rem 0.8rem;text-align:center;">
                     <div style="font-size:0.7rem;color:{color};font-weight:600">{fname}</div>
-                    <div style="font-size:0.85rem;font-weight:600;margin-top:0.2rem">{fval}</div>
+                    <div style="font-size:0.85rem;font-weight:600;margin-top:0.2rem;color:#FFFFFF">{fval}</div>
                 </div>
                 """, unsafe_allow_html=True)
 
