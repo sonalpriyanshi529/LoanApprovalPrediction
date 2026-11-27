@@ -90,6 +90,18 @@ A sidebar shows the **active model** and its performance metrics.
 | Education | | |
 | Self-employed | | |
 
+### Screenshots
+
+<p align="center">
+  <img src="Documentation/screenshots/app-predict.png" alt="Predict tab: the model performance overview cards and the applicant information form" width="100%" />
+</p>
+<p align="center"><sub><b>Predict tab:</b> performance overview of the active model, and the applicant information form.</sub></p>
+
+<p align="center">
+  <img src="Documentation/screenshots/app-model-comparison.png" alt="Model Comparison tab: a table and stacked bar chart comparing Logistic Regression, Random Forest and XGBoost" width="100%" />
+</p>
+<p align="center"><sub><b>Model Comparison tab:</b> all three models side by side on every metric.</sub></p>
+
 ---
 
 ## ML Pipeline
@@ -225,7 +237,10 @@ LoanApprovalPrediction/
 ├── Streamlit_App/
 │   └── app.py                     Streamlit web application
 ├── Documentation/
-│   └── Project_Report.md          Technical project report
+│   ├── Project_Report.md          Technical project report
+│   └── screenshots/               App screenshots used in this README
+│       ├── app-predict.png
+│       └── app-model-comparison.png
 ├── train_model.py                 Retrain locally and regenerate Model/
 ├── requirements.txt               Python dependencies
 └── README.md                      This file
